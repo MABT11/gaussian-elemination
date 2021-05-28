@@ -21,12 +21,12 @@ void ref(float a[][4], int m)
     {
         for(int j = 0; j <= m; j++)             //00 01 02 03
         {                                       //10 11 12 13
-            if(i>j)                             //20 21 22 23 
+            if(i<j)                             //20 21 22 23 
             {
-                float c = -a[i][j]/a[j][j];     //value of the number you want to cancel/ the number above it
+                float c = -a[j][i]/a[i][i];     //the constant that you will multiply in order to cancel the number below it 
+                                                // you want to cancel a[1][0] so you will multiply a[0][0] by the correct coffecient in order to get rid of a[1][0]
                     for(int k = 0; k <= m; k++)
-                    a[i][k]=a[i][k]+(c*a[0][k]);
-                
+                    a[j][k]=a[j][k]+(c*a[i][k]);    //multiplty all the entries of the row by the same constant and add thekm together
             }
         }
     }
